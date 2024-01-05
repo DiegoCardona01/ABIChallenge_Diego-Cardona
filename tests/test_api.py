@@ -27,7 +27,7 @@ def test_null_prediction():
                                                     'budget' : 0,
                                                     'imdb_score' : 0
                                                     })
-    # Primero nos aseguramos que se ejecute, por lo tanto el status_code debe ser igual a 200
+    # Primero nos aseguramos que se ejecute, por lo tanto el status_code debe ser igual a 200.
     assert response.status_code == 200
     # Como sabemos la respuesta debe ser cero y nos aseguramos de eso
     assert response.json()['worldwide_gross'] == 0
