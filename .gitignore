@@ -16,3 +16,10 @@ ENV/
 
 # credential
 *.json
+
+# reports
+*.txt
+*.png
+
+# pycache
+__pycache__/
