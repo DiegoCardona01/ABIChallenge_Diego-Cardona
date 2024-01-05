@@ -1,0 +1,12 @@
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# data files
+*.csv
+
+# Jupyter Notebook
+.ipynb_checkpoints
