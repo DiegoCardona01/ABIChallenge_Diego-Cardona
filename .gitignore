@@ -10,3 +10,9 @@ ENV/
 
 # Jupyter Notebook
 .ipynb_checkpoints
+
+# model
+*.pkl
+
+# credential
+*.json
