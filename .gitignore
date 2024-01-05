@@ -18,7 +18,7 @@ ENV/
 *.json
 
 # reports
-*.txt
+report.txt
 *.png
 
 # pycache
