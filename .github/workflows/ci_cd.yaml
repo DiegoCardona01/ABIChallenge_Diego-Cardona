@@ -5,7 +5,7 @@ on:
       - main
   workflow_run:
     workflows: ["Continuous Training"]
-    branches: [main]
+    branches: [develop]
     types:
       - completed
   workflow_dispatch:
