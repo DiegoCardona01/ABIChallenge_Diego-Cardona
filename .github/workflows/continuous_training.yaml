@@ -1,16 +1,16 @@
 name: Continuous Training
-on:
-  push:
-    branches:
-    - develop
-  schedule:
-    - cron: '0 */15 * * *'
-  workflow_dispatch:
-    inputs:
-      reason:
-        description: Why do you want to run this?
-        required: false
-        default: running CT
+on: [push]
+  # push:
+  #   branches:
+  #   - develop
+  # schedule:
+  #   - cron: '0 */15 * * *'
+  # workflow_dispatch:
+  #   inputs:
+  #     reason:
+  #       description: Why do you want to run this?
+  #       required: false
+  #       default: running CT
 jobs:
   continuous-training:
     runs-on: ubuntu-latest

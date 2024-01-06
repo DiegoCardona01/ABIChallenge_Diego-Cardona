@@ -22,9 +22,9 @@ def get_prediction(request: PredictionRequest) -> float:
     # le corresponde al científico de datos o al ingeniero de machine learning.
     return max(0, prediction)
 
-def get_data(request: PredictionRequest) -> pd.DataFrame:
-    data_to_predict = transform_to_dataframe(request)
-    return data_to_predict
+# def get_data(request: PredictionRequest) -> pd.DataFrame:
+#     data_to_predict = transform_to_dataframe(request)
+#     return data_to_predict
 
 # def save_new_data(data_user: pd.DataFrame, prediction: float) -> None:
     
