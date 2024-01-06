@@ -22,8 +22,6 @@ def get_model() -> Pipeline:
     with open(model_path, 'rb') as model_file:
         # Transformamos el model_path en bytes y lo cargamos
         model = load(BytesIO(model_file.read()))
-    # with open(model_path, 'rb') as model_file:
-    #     model = pickle.load(model_file)
     return model
 
 def transform_to_dataframe(class_model: BaseModel) -> DataFrame:
