@@ -19,5 +19,5 @@ app = FastAPI(docs_url='/')
 def make_model_prediction(request: PredictionRequest):
     data_user = get_data(request)
     predict = get_prediction(request)
-    save_new_data(data_user, predict)
+    # save_new_data(data_user, predict)
     return PredictionResponse(worldwide_gross=get_prediction(request))
