@@ -41,8 +41,8 @@ movie_data = movie_data[numeric_columns+['movie_title']]
 
 fin_data = fin_data[['movie_title', 'production_budget', 'worldwide_gross']]
 
-fin_movie_data = pd.merge(fin_data, movie_data, on='movie_title', how='left', validate='1:1')
-full_movie_data = pd.merge(opening_data, fin_movie_data, on='movie_title', how='left', validate='1:1')
+fin_movie_data = pd.merge(fin_data, movie_data, on='movie_title', how='left')
+full_movie_data = pd.merge(opening_data, fin_movie_data, on='movie_title', how='left')
 
 full_movie_data = full_movie_data.drop(['gross', 'movie_title'], axis=1)
 
