@@ -8,7 +8,11 @@
 """
 from fastapi import FastAPI
 from .app.models import PredictionResponse, PredictionRequest
-from .app.views import get_prediction
+from .app.views import get_prediction, get_data, save_new_data
+from google.cloud import storage
+
+bucket_name = 'model-dataset-tracker-abi'
+
 #Instanciamos la dirección en local con / para probar el desarrollo
 app = FastAPI(docs_url='/')
 
@@ -16,7 +20,7 @@ app = FastAPI(docs_url='/')
 # este ejecuta mak_model_prediction que es la predicción
 @app.post('/v1/prediction')
 def make_model_prediction(request: PredictionRequest):
-    # data_user = get_data(request)
-    # predict = get_prediction(request)
-    # save_new_data(data_user, predict)
+    data_user = get_data(request)
+    predict = get_prediction(request)
+    save_new_data(data_user, predict)
     return PredictionResponse(worldwide_gross=get_prediction(request))

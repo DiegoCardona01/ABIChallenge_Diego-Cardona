@@ -7,10 +7,11 @@
 """
 from .models import PredictionRequest
 from .util import get_model, transform_to_dataframe
-# from google.cloud import storage
+from google.cloud import storage
 import pandas as pd
 import os
 
+client = storage.Client()
 model = get_model()
 
 def get_prediction(request: PredictionRequest) -> float:
@@ -22,25 +23,28 @@ def get_prediction(request: PredictionRequest) -> float:
     # le corresponde al científico de datos o al ingeniero de machine learning.
     return max(0, prediction)
 
-# def get_data(request: PredictionRequest) -> pd.DataFrame:
-#     data_to_predict = transform_to_dataframe(request)
-#     return data_to_predict
+def get_data(request: PredictionRequest) -> pd.DataFrame:
+    data_to_predict = transform_to_dataframe(request)
+    return data_to_predict
 
-# def save_new_data(data_user: pd.DataFrame, prediction: float) -> None:
+def save_new_data(data_user: pd.DataFrame, prediction: float) -> None:
     
-#     new_data = data_user.copy()
+    new_data = data_user.copy()
 
-#     new_data['prediction'] = prediction
+    new_data['prediction'] = prediction
 
-#     # csv_filename = './dataset/data_storage.csv'
-#     gcs_bucket_name = 'model-dataset-tracker-abi'
-#     gcs_filename = 'data_storage.csv'
+    
 
-#     # csv_data = new_data.to_csv(index=False)
+    # csv_filename = './dataset/data_storage.csv'
+    gcs_bucket_name = 'model-dataset-tracker-abi'
+    gcs_filename = 'storage/data_storage.csv'
 
-#     bucket = client.get_bucket(gcs_bucket_name)
-#     blob = bucket.blob(gcs_filename)
-#     blob.upload_from_string(new_data, content_type='text/csv')
+    csv_data = new_data.to_csv(index=False)
+    bytes_data = csv_data.encode('utf-8')
+
+    bucket = client.get_bucket(gcs_bucket_name)
+    blob = bucket.blob(gcs_filename)
+    blob.upload_from_string(bytes_data, content_type='text/csv')
 
     # if not os.path.exists(csv_filename):
     #     new_data.to_csv(csv_filename, index=False, header=True, mode='w')
