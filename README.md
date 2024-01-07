@@ -35,3 +35,4 @@ Our Docker image has also been registered with the Google Run service for manage
 ## CI/CD and CML
 
 All these steps have been scheduled and prepared for continuous execution. Our CI/CD file is parameterized to run every 15 hours. Significantly, the main branch holds the utmost importance, where each pull request involves retraining the model (either manually triggered). Both testing and SonarCloud test activation have been configured to trigger on every push or pull request, ensuring heightened security for our project.
+
