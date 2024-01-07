@@ -20,17 +20,6 @@ from dvc import api
 from config import path_finantials, path_movies, path_opening_gross, path_full_data
 from util import DataLoader
 
-# Logger to track the data processing progress.
-# logging.basicConfig(
-#     format='%(asctime)s %(levelname)s:%(name)s: %(message)s',
-#     level=logging.INFO,
-#     datefmt='%H:%M:%S',
-#     stream=sys.stderr
-# )
-
-# logger = logging.getLogger(__name__)
-
-# Crear un logger
 logger = logging.getLogger(__name__)
 
 logger.setLevel(logging.INFO)
@@ -59,8 +48,8 @@ movie_data = movie_data[numeric_columns+['movie_title']]
 
 fin_data = fin_data[['movie_title', 'production_budget', 'worldwide_gross']]
 
-fin_movie_data = pd.merge(fin_data, movie_data, on='movie_title', how='left')
-full_movie_data = pd.merge(opening_data, fin_movie_data, on='movie_title', how='left')
+fin_movie_data = pd.merge(fin_data, movie_data, on='movie_title', how='left', validate=None)
+full_movie_data = pd.merge(opening_data, fin_movie_data, on='movie_title', how='left', validate=None)
 
 full_movie_data = full_movie_data.drop(['gross', 'movie_title'], axis=1)
 
