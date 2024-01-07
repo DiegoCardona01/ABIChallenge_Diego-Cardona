@@ -48,7 +48,8 @@ def save_new_data(data_user: pd.DataFrame, prediction: float) -> None:
         blob = bucket.blob(gcs_filename)
         existing_data = blob.download_as_text()
         existing_df = pd.read_csv(StringIO(existing_data))
-    except:
+    except Exception as e:
+        print(f'An unexpected error occurred: {e}')
         existing_df = pd.DataFrame()
 
     combined_data = pd.concat([existing_df, new_data], ignore_index=True)
@@ -56,24 +57,4 @@ def save_new_data(data_user: pd.DataFrame, prediction: float) -> None:
     combined_csv_data = combined_data.to_csv(index=False)
     combined_bytes_data = combined_csv_data.encode('utf-8')
 
-    blob.upload_from_string(combined_bytes_data, content_type='text/csv')   
-
-
-#### past data #####
-    # csv_filename = './dataset/data_storage.csv'
-    # gcs_bucket_name = 'model-dataset-tracker-abi'
-    # gcs_filename = 'storage/data_storage.csv'
-
-    # csv_data = new_data.to_csv(index=False)
-    # bytes_data = csv_data.encode('utf-8')
-
-    # bucket = client.get_bucket(gcs_bucket_name)
-    # blob = bucket.blob(gcs_filename)
-    # blob.upload_from_string(bytes_data, content_type='text/csv')
-
-    # if not os.path.exists(csv_filename):
-    #     new_data.to_csv(csv_filename, index=False, header=True, mode='w')
-    #     blob.upload_from_string(new_data, content_type='text/csv')
-    # else:
-    #     new_data.to_csv(csv_filename, index=False, header=False, mode='a')
-    #     blob.upload_from_string(new_data, content_type='text/csv')
+    blob.upload_from_string(combined_bytes_data, content_type='text/csv')
