@@ -10,6 +10,8 @@ To track processes, detect errors, and security flaws, SonarCloud has been imple
 
 SonarCloud Status: [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=DiegoCardona01_ABIChallenge_Diego-Cardona&metric=alert_status&token=4934187b79ce77a2932ca63d4b86aace4ffe2d3b)](https://sonarcloud.io/summary/new_code?id=DiegoCardona01_ABIChallenge_Diego-Cardona)
 
+NOTE: If you go to SonarCloud, you will see that there are no bugs, security issues, or code problems, but it throws an error for not passing the tests. However, in the develop branch, you can see that the entire development has been approved by SonarCloud.
+
 ## Summary
 
 The project can be generalized as the implementation of workflows in GitHub Actions, maintaining comprehensive CI/CD control over the entire project. This facilitates a secure verification process before accepting pull requests. Additionally, foundational test and continuous training workflows have been added to the deployed API, all seamlessly integrated with SonarCloud, as demonstrated in the previous section. There's even a SonarCloud badge to indicate whether the branch is approved and secure according to SonarCloud.
