@@ -20,14 +20,26 @@ import sys
 import numpy as np
 import pandas as pd
 
-logging.basicConfig(
-    format='%(asctime)s %(levelname)s:%(name)s: %(message)s',
-    level=logging.INFO,
-    datefmt='%H:%M:%S',
-    stream=sys.stderr
-)
+# logging.basicConfig(
+#     format='%(asctime)s %(levelname)s:%(name)s: %(message)s',
+#     level=logging.INFO,
+#     datefmt='%H:%M:%S',
+#     stream=sys.stderr
+# )
+
+# logger = logging.getLogger(__name__)
 
 logger = logging.getLogger(__name__)
+
+logger.setLevel(logging.INFO)
+
+formatter = logging.Formatter('%(asctime)s %(levelname)s:%(name)s: %(message)s', 
+                              datefmt='%H:%M:%S')
+
+handler = logging.StreamHandler(sys.stderr)
+handler.setFormatter(formatter)
+
+logger.addHandler(handler)
 
 logger.info('Loading Data...')
 data = pd.read_csv(path_full_data)
