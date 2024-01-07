@@ -20,7 +20,7 @@ def get_prediction(request: PredictionRequest) -> float:
     # damos un max(0, prediction) porque no es bueno darle a un usuario final
     # una predicción cruda, en este caso si la predicción nos da negativa ponemos un 0
     # así no confundimos al usuario final en caso de predicciones negativas cuyo análisis
-    # le corresponde al científico de datos o al ingeniero de machine learning.
+    # le corresponde al científico de datos o al ingeniero de machine learning
     return max(0, prediction)
 
 def get_data(request: PredictionRequest) -> pd.DataFrame:
