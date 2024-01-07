@@ -21,14 +21,27 @@ from config import path_finantials, path_movies, path_opening_gross, path_full_d
 from util import DataLoader
 
 # Logger to track the data processing progress.
-logging.basicConfig(
-    format='%(asctime)s %(levelname)s:%(name)s: %(message)s',
-    level=logging.INFO,
-    datefmt='%H:%M:%S',
-    stream=sys.stderr
-)
+# logging.basicConfig(
+#     format='%(asctime)s %(levelname)s:%(name)s: %(message)s',
+#     level=logging.INFO,
+#     datefmt='%H:%M:%S',
+#     stream=sys.stderr
+# )
 
+# logger = logging.getLogger(__name__)
+
+# Crear un logger
 logger = logging.getLogger(__name__)
+
+logger.setLevel(logging.INFO)
+
+formatter = logging.Formatter('%(asctime)s %(levelname)s:%(name)s: %(message)s', 
+                              datefmt='%H:%M:%S')
+
+handler = logging.StreamHandler(sys.stderr)
+handler.setFormatter(formatter)
+
+logger.addHandler(handler)
 
 logging.info('Fetching data..')
 
