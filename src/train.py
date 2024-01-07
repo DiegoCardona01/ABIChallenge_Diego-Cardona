@@ -7,7 +7,8 @@
     script, the data is received, processed accordingly, and then split into training and test 
     sets. Hyperparameter tuning is performed, and the model is executed with the best results.
 """
-from util import update_model, save_simple_metrics_report, get_model_performance_test_set
+from util import update_model, ModelEvaluator
+from config import path_full_data
 from sklearn.model_selection import train_test_split, cross_validate, GridSearchCV
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
@@ -29,7 +30,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 logger.info('Loading Data...')
-data = pd.read_csv('dataset/full_data.csv')
+data = pd.read_csv(path_full_data)
 
 logger.info('Loading model...')
 model = Pipeline([
@@ -76,9 +77,14 @@ update_model(grid_search.best_estimator_)
 
 logger.info('Generating model report...')
 validation_score = grid_search.best_estimator_.score(X_test, y_test)
-save_simple_metrics_report(train_score, test_score, validation_score, grid_search.best_estimator_)
+best_model = grid_search.best_estimator_
+model_evaluator = ModelEvaluator()
+
+model_evaluator.save_simple_metrics_report(train_score, test_score, validation_score, best_model)
+# save_simple_metrics_report(train_score, test_score, validation_score, grid_search.best_estimator_)
 
 y_test_pred = grid_search.best_estimator_.predict(X_test)
-get_model_performance_test_set(y_test, y_test_pred)
+model_evaluator.get_model_performance_test_set(y_test, y_test_pred)
+# get_model_performance_test_set(y_test, y_test_pred)
 
 logger.info('Training Finished')
