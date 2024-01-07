@@ -10,7 +10,7 @@ To track processes, detect errors, and security flaws, SonarCloud has been imple
 
 SonarCloud Status: [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=DiegoCardona01_ABIChallenge_Diego-Cardona&metric=alert_status&token=4934187b79ce77a2932ca63d4b86aace4ffe2d3b)](https://sonarcloud.io/summary/new_code?id=DiegoCardona01_ABIChallenge_Diego-Cardona)
 
-NOTE: If you go to SonarCloud, you will see that there are no bugs, security issues, or code problems, but it throws an error for not passing the tests. However, in the develop branch, you can see that the entire development has been approved by SonarCloud.
+NOTE: If you go to SonarCloud, you will see that there are no bugs, security issues, or code problems, only missing to implement more tests like the test created for the API in the testing YAML file; this was left undone due to time constraints.
 
 ## Summary
 
