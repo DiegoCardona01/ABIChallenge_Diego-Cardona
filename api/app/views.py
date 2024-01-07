@@ -40,24 +40,19 @@ def save_new_data(data_user: pd.DataFrame, prediction: float) -> None:
     new_data = data_user.copy()
     new_data['prediction'] = prediction
 
-    # GCS configuration
     gcs_bucket_name = 'model-dataset-tracker-abi'
     gcs_filename = 'storage/data_storage.csv'
 
-    # Download existing data from GCS if it exists
     try:
         bucket = client.get_bucket(gcs_bucket_name)
         blob = bucket.blob(gcs_filename)
         existing_data = blob.download_as_text()
         existing_df = pd.read_csv(StringIO(existing_data))
     except:
-        # If the file doesn't exist yet, start with an empty DataFrame
         existing_df = pd.DataFrame()
 
-    # Concatenate existing data with new data
     combined_data = pd.concat([existing_df, new_data], ignore_index=True)
 
-    # Upload the combined data back to GCS
     combined_csv_data = combined_data.to_csv(index=False)
     combined_bytes_data = combined_csv_data.encode('utf-8')
 
