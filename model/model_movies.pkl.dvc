@@ -1,5 +1,5 @@
 outs:
-- md5: d79c6b4eaf348166392e46a8b75f27d7
+- md5: ca69e3e1b9dbe948a9d7bd3f8079f475
   size: 182754
   hash: md5
   path: model_movies.pkl
