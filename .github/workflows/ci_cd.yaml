@@ -2,7 +2,7 @@ name: Continuous Integration/Continuous Deployment
 on:
   push:
     branches:
-      - main
+      # - main
   workflow_run:
     workflows: ["Continuous Training"]
     branches: [main]
