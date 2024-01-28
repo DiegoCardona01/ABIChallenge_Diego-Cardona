@@ -2,9 +2,9 @@ name: Continuous Training
 on:
   push:
     branches:
-    - main
+    # - main
   schedule:
-    - cron: '0 */15 * * *'
+    # - cron: '0 */15 * * *'
   workflow_dispatch:
     inputs:
       reason:

@@ -1,5 +1,5 @@
 name: Run SonarCloud
-on: [push, pull_request]
+# on: [push, pull_request]
 jobs:
   DemoSonarCloudScan:
     runs-on: ubuntu-latest
